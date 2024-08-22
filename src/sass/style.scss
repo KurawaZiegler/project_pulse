@@ -1,0 +1,14 @@
+* {
+    font-family: "Museo Sabs Cyrl", sans-serif;
+}
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+@import "base/variables";
+@import "base/mixins";
+// @import "blocks/general";
+@import "blocks/promo";
+@import "blocks/header";
+@import "blocks/buttons";
+@import "blocks/media";
