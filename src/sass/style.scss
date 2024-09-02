@@ -1,7 +1,9 @@
 * {
     font-family: "Museo Sabs Cyrl", sans-serif;
+    transition: all 0.3s;
 }
 .container {
+    position: relative;
     max-width: 950px;
     margin: 0 auto;
 }
