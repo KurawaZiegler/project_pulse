@@ -9,6 +9,7 @@
 .modal {
     padding: 40px;
     position: absolute;
+    z-index: 99;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -23,6 +24,15 @@
         line-height: 20px;
         color: $main_color;
         cursor: pointer;
+        &:focus {
+            transform: scale(1.1);
+        }
+    }
+    img {
+        margin-top: 10px;
+        width: 100%;
+        max-height: 290px;
+        object-fit: contain;
     }
     &__subtitle {
         font-weight: 700;
@@ -44,6 +54,14 @@
     }
     &_mini {
         min-height: 143px;
+    }
+    .error {
+        border: 2px solid red;
+    }
+    label.error {
+        text-align: center;
+        margin-bottom: 15px;
+        border: none;
     }
 }
 

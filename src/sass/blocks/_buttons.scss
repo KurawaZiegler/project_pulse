@@ -29,4 +29,12 @@
         height: 40px;
         font-size: 14px;
     }
+    &:hover {
+        background-color: #9f0000;
+    }
+    &:active {
+        // transition: 0.1s;
+        // box-shadow: inset 5px -5px 0px #690000;
+        transform: scale(0.95);
+    }
 }

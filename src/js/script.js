@@ -49,18 +49,105 @@ $(document).ready(function () {
   $('.button_mini').each(function (i) {
     $(this).on('click', function () {
       $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text())
+      $('#order .modal__img').attr('src', $('.catalog-item__img').eq(i).attr('src'))
+      $('.pageup').hide()
+      $('html, body').css('overflow', 'hidden')
       $('.overlay, #order').fadeIn();
     });
   });
 
-
-
-  // $('.btn_buy').on('click', function () {
-  //   $('#thanks').fadeIn();
-  // });
-
-
   $('.modal__close').on('click', function () {
     $('.overlay, #consultation, #order, #thanks').fadeOut();
+    $('html, body').css('overflow', 'visible')
   });
+
+  function validateForms(form) {
+    $(form).validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 2
+        },
+        phone: "required",
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: "Введите своё имя",
+          minlength: jQuery.validator.format("Минимум {0} символа")
+        },
+        phone: "Введите свой телефон",
+        email: {
+          required: "Введите свою почту",
+          email: "Почтовый адресс должен быть формата: yourname@example.com"
+        }
+      }
+    });
+  };
+  validateForms('#consultation-form');
+  validateForms('#consultation form');
+  validateForms('#order form');
+
+  $('input[name=phone]').mask("+7 (999) 999-9999", { placeholder: "+7 (999) 999-9999" });
+
+  // $('form').submit(function (e) {
+  //   e.preventDefault();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "mailer/smart.php",
+  //     data: $(this).serialize()
+  //   }).done(function () {
+  //     $(this).find("input").val("");
+  //     $('#consultation, #order').fadeOut();
+  //     $('.overlay, #thanks').fadeIn('slow');
+
+  //     $('form').trigger('reset');
+  //   });
+  //   return false;
+  // });
+
+  //send to server
+
+  $('form').submit(function (e) {
+    e.preventDefault();
+
+    if (!$(this).valid()) {
+      return;
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "mailer/smart.php",
+      data: $(this).serialize()
+    }).done(function () {
+      $(this).find('input').val('');
+      $('#consultation, #order').fadeOut();
+      $('.overlay, #thanks').fadeIn();
+
+
+      $('form').trigger('reset');
+    });
+    return false;
+  });
+
+  //smooth scroll up
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 1600) {
+      $('.pageup').fadeIn();
+    } else {
+      $('.pageup').fadeOut();
+    }
+  });
+
+  //animate
+
+  new WOW().init();
+
+
+
+
 });

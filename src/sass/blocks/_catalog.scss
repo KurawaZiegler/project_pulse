@@ -71,7 +71,7 @@
         &__subtitle {
             margin-top: 15px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             text-align: center;
             color: #0d0d0d;
         }
@@ -142,7 +142,7 @@
         &__content {
             width: 50%;
             margin-right: 0px;
-            transform: translateX(-100%);
+            transform: translateX(-130%);
             &_active {
                 transform: translateX(0%);
                 margin-right: 20px;
@@ -156,7 +156,7 @@
             padding-left: 16px;
             margin-bottom: 0;
             list-style-type: none;
-            li {
+            li:not(:last-child) {
                 position: relative;
                 margin-bottom: 15px;
                 font-weight: 300;
